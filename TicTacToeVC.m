@@ -26,8 +26,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLeftLabel;
 
 @property int currentPlayer;
-@property NSMutableArray *p1Points;
-@property NSMutableArray *p2Points;
 @property NSMutableArray *hasBeenClicked;
 @property UIImage *tealImg;
 @property UIImage *blueImg;
@@ -42,7 +40,7 @@
 
 @implementation TicTacToeVC
 
-@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, currentPlayer, p2Points, p1Points, tealImg, blueImg, orangeImg, hasBeenClicked, currentTurn, timer, timeLeftLabel, currentPlayerLabel, player1, player2;
+@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, currentPlayer, tealImg, blueImg, orangeImg, hasBeenClicked, currentTurn, timer, timeLeftLabel, currentPlayerLabel, player1, player2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,8 +69,8 @@
 }
 
 //array of sum of points in rows/columns/diag in format:
-//[c1, c2, c3, r1, r2, r3, d1-(top left to bot right), d2]
-//[0 ,  1,  2,  3,  4,  5,  6,                          7]
+//reprsent[c1, c2, c3, r1, r2, r3, d1-(top left to bot right), d2]
+//indexes [0 ,  1,  2,  3,  4,  5,  6,                          7]
 
 - (IBAction)b1Click:(UIButton *)sender {
     if (![hasBeenClicked containsObject:@1]) {
@@ -189,28 +187,32 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Game Over!" message:[NSString stringWithFormat:@"Congratulations %@!", winner] preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *restartGame = [UIAlertAction actionWithTitle:@"restart" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [b1 setImage:orangeImg forState:UIControlStateNormal];
-        [b2 setImage:orangeImg forState:UIControlStateNormal];
-        [b3 setImage:orangeImg forState:UIControlStateNormal];
-        [b4 setImage:orangeImg forState:UIControlStateNormal];
-        [b5 setImage:orangeImg forState:UIControlStateNormal];
-        [b6 setImage:orangeImg forState:UIControlStateNormal];
-        [b7 setImage:orangeImg forState:UIControlStateNormal];
-        [b8 setImage:orangeImg forState:UIControlStateNormal];
-        [b9 setImage:orangeImg forState:UIControlStateNormal];
-        for (int i=0; i<player1.pointsArray.count; i++) {
-            [player1.pointsArray replaceObjectAtIndex:i withObject:@0];
-            [player2.pointsArray replaceObjectAtIndex:i withObject:@0];
-        }
-        [hasBeenClicked removeAllObjects];
-        currentTurn = 0;
-        [self resetTimeLabel];
-        [self resetTimer];
+        [self resetGame];
     }];
     
     [alertController addAction:restartGame];
     
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+-(void) resetGame{
+    [b1 setImage:orangeImg forState:UIControlStateNormal];
+    [b2 setImage:orangeImg forState:UIControlStateNormal];
+    [b3 setImage:orangeImg forState:UIControlStateNormal];
+    [b4 setImage:orangeImg forState:UIControlStateNormal];
+    [b5 setImage:orangeImg forState:UIControlStateNormal];
+    [b6 setImage:orangeImg forState:UIControlStateNormal];
+    [b7 setImage:orangeImg forState:UIControlStateNormal];
+    [b8 setImage:orangeImg forState:UIControlStateNormal];
+    [b9 setImage:orangeImg forState:UIControlStateNormal];
+    for (int i=0; i<player1.pointsArray.count; i++) {
+        [player1.pointsArray replaceObjectAtIndex:i withObject:@0];
+        [player2.pointsArray replaceObjectAtIndex:i withObject:@0];
+    }
+    [hasBeenClicked removeAllObjects];
+    currentTurn = 0;
+    [self resetTimeLabel];
+    [self resetTimer];
 }
 
 -(NSString *)checkForWinner{
@@ -230,7 +232,6 @@
                                    selector:@selector(changeTurn:)
                                    userInfo:nil
                                     repeats:NO];
-    
 }
 
 -(void) resetTimer{
@@ -256,6 +257,10 @@
 
 -(void) updateTimeLabel:(NSTimer *)timer{
     timeLeftLabel.text = [NSString stringWithFormat:@"%ld", [timeLeftLabel.text integerValue] - 1 ];
+}
+
+-(IBAction)unwindToRoot:(UIStoryboardSegue *)unwindSegue{
+    [self resetGame];
 }
 
 @end

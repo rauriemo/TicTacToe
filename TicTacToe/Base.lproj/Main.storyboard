@@ -161,6 +161,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="vs AI" id="4uY-Jd-EKx">
+                            <connections>
+                                <segue destination="JbW-nk-muX" kind="show" id="heq-7j-pQN"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="YEX-fz-LST"/>
                     <connections>
                         <outlet property="b1" destination="aKz-rk-yLE" id="jcs-02-4Aq"/>
@@ -178,6 +185,197 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1297.5" y="298"/>
+        </scene>
+        <!--Vs ModeVC-->
+        <scene sceneID="I3T-wD-jBm">
+            <objects>
+                <viewController id="JbW-nk-muX" customClass="VsModeVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gqw-La-Qss"/>
+                        <viewControllerLayoutGuide type="bottom" id="cLk-cg-Scp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pfV-VS-Dwm">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oes-8R-7gW">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="orange_button"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="75" y="263" width="78" height="64"/>
+                                </variation>
+                                <connections>
+                                    <action selector="b7Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZvW-7K-B92"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkR-cc-P2B">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="orange_button"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="161" y="263" width="78" height="64"/>
+                                </variation>
+                                <connections>
+                                    <action selector="b8Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i3Y-Tm-GT1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4p-yK-b5l">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="orange_button"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="247" y="263" width="78" height="64"/>
+                                </variation>
+                                <connections>
+                                    <action selector="b9Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yyY-Fo-Foi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLD-Nl-txe">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="orange_button"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="161" y="177" width="78" height="64"/>
+                                </variation>
+                                <connections>
+                                    <action selector="b5Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k3q-yE-Jfm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKs-NH-y5w">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="orange_button"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="247" y="177" width="78" height="64"/>
+                                </variation>
+                                <connections>
+                                    <action selector="b6Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x0d-Rl-DGz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHd-qz-BDI">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="orange_button"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="75" y="177" width="78" height="64"/>
+                                </variation>
+                                <connections>
+                                    <action selector="b4Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NQI-mE-Eci"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1P0-f2-FDZ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="orange_button"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="161" y="92" width="78" height="64"/>
+                                </variation>
+                                <connections>
+                                    <action selector="b2Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O9Q-16-atA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyJ-QP-DM0">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="orange_button"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="247" y="92" width="78" height="64"/>
+                                </variation>
+                                <connections>
+                                    <action selector="b3Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gsu-dE-f6Q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="b1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edJ-TU-vxn">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="orange_button">
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="75" y="92" width="78" height="64"/>
+                                </variation>
+                                <connections>
+                                    <action selector="b1Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uVf-r4-MdO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="player 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdV-xX-gIf">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="23"/>
+                                <color key="textColor" red="0.36295402490000001" green="0.2739221409" blue="0.1666013375" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="121" y="28" width="159" height="33"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVQ-79-B3E">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="180" y="360" width="41" height="39"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcY-rk-ApJ">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="16"/>
+                                <state key="normal" title="tough">
+                                    <color key="titleColor" red="0.36295402490000001" green="0.2739221409" blue="0.1666013375" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="262" y="451" width="48" height="30"/>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzz-f5-Erh">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="16"/>
+                                <state key="normal" title="easy">
+                                    <color key="titleColor" red="0.36295402490000001" green="0.2739221409" blue="0.1666013375" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="90" y="451" width="48" height="30"/>
+                                </variation>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90433644410000003" green="0.92844169629999995" blue="0.96632308030000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="oes-8R-7gW"/>
+                                <exclude reference="AkR-cc-P2B"/>
+                                <exclude reference="N4p-yK-b5l"/>
+                                <exclude reference="HLD-Nl-txe"/>
+                                <exclude reference="GKs-NH-y5w"/>
+                                <exclude reference="tHd-qz-BDI"/>
+                                <exclude reference="1P0-f2-FDZ"/>
+                                <exclude reference="eyJ-QP-DM0"/>
+                                <exclude reference="edJ-TU-vxn"/>
+                                <exclude reference="CdV-xX-gIf"/>
+                                <exclude reference="CVQ-79-B3E"/>
+                                <exclude reference="zcY-rk-ApJ"/>
+                                <exclude reference="nzz-f5-Erh"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="oes-8R-7gW"/>
+                                <include reference="AkR-cc-P2B"/>
+                                <include reference="N4p-yK-b5l"/>
+                                <include reference="HLD-Nl-txe"/>
+                                <include reference="GKs-NH-y5w"/>
+                                <include reference="tHd-qz-BDI"/>
+                                <include reference="1P0-f2-FDZ"/>
+                                <include reference="eyJ-QP-DM0"/>
+                                <include reference="edJ-TU-vxn"/>
+                                <include reference="CdV-xX-gIf"/>
+                                <include reference="CVQ-79-B3E"/>
+                                <include reference="zcY-rk-ApJ"/>
+                                <include reference="nzz-f5-Erh"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem title="back" id="jJl-pl-TX8">
+                            <connections>
+                                <segue destination="l2b-mV-CmG" kind="unwind" unwindAction="unwindToRoot:" id="qO5-cG-lLu"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d2z-Dg-bY6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="l2b-mV-CmG" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2016" y="298"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Gs1-KI-svg">

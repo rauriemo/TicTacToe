@@ -16,6 +16,7 @@
 		32876FB51C47370D0047ACFC /* TicTacToeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32876FB41C47370D0047ACFC /* TicTacToeUITests.m */; };
 		32876FC41C4737390047ACFC /* TicTacToeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 32876FC31C4737390047ACFC /* TicTacToeVC.m */; };
 		32876FC71C484FF80047ACFC /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 32876FC61C484FF80047ACFC /* Player.m */; };
+		32876FCA1C485F9B0047ACFC /* VsModeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 32876FC91C485F9B0047ACFC /* VsModeVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		32876FC31C4737390047ACFC /* TicTacToeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicTacToeVC.m; sourceTree = SOURCE_ROOT; };
 		32876FC51C484FF80047ACFC /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		32876FC61C484FF80047ACFC /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		32876FC81C485F9B0047ACFC /* VsModeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VsModeVC.h; sourceTree = "<group>"; };
+		32876FC91C485F9B0047ACFC /* VsModeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VsModeVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 			children = (
 				32876FC21C4737390047ACFC /* TicTacToeVC.h */,
 				32876FC31C4737390047ACFC /* TicTacToeVC.m */,
+				32876FC81C485F9B0047ACFC /* VsModeVC.h */,
+				32876FC91C485F9B0047ACFC /* VsModeVC.m */,
 				32876FC51C484FF80047ACFC /* Player.h */,
 				32876FC61C484FF80047ACFC /* Player.m */,
 				32876F921C47370D0047ACFC /* AppDelegate.h */,
@@ -279,6 +284,7 @@
 				32876F941C47370D0047ACFC /* AppDelegate.m in Sources */,
 				32876FC41C4737390047ACFC /* TicTacToeVC.m in Sources */,
 				32876F911C47370D0047ACFC /* main.m in Sources */,
+				32876FCA1C485F9B0047ACFC /* VsModeVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
