@@ -21,9 +21,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *b8;
 @property (weak, nonatomic) IBOutlet UIButton *b9;
 
+@property (weak, nonatomic) IBOutlet UILabel *currentPlayerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLeftLabel;
 
 @property int currentPlayer;
-@property (weak, nonatomic) IBOutlet UILabel *currentPlayerLabel;
 @property NSMutableArray *p1Points;
 @property NSMutableArray *p2Points;
 @property NSMutableArray *hasBeenClicked;
@@ -31,12 +32,13 @@
 @property UIImage *blueImg;
 @property UIImage *orangeImg;
 @property int currentTurn;
+@property NSTimer *timer;
 
 @end
 
 @implementation TicTacToeVC
 
-@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, currentPlayer, p2Points, p1Points, tealImg, blueImg, orangeImg, hasBeenClicked, currentTurn;
+@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, currentPlayer, p2Points, p1Points, tealImg, blueImg, orangeImg, hasBeenClicked, currentTurn, timer, timeLeftLabel, currentPlayerLabel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,6 +51,16 @@
     orangeImg = [UIImage imageNamed:@"orange_button.png"];
     currentPlayer = 1;
     currentTurn = 0;
+    
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    [self startTimer];
+    [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                     target:self
+                                   selector:@selector(updateTimeLabel:)
+                                   userInfo:nil
+                                    repeats:YES];
 }
 
 //array of sum of points in rows/columns/diag in format:
@@ -60,6 +72,7 @@
         [hasBeenClicked addObject:@1];
         [self updatePoints:@[@0,@3,@6]];
         [self updateBoard:sender];
+        [self resetTimer];
     }
 }
 - (IBAction)b2Click:(UIButton *)sender {
@@ -67,6 +80,7 @@
         [hasBeenClicked addObject:@2];
         [self updatePoints:@[@1,@3]];
         [self updateBoard:sender];
+        [self resetTimer];
     }
 }
 - (IBAction)b3Click:(UIButton *)sender {
@@ -74,6 +88,7 @@
         [hasBeenClicked addObject:@3];
         [self updatePoints:@[@2,@3,@7]];
         [self updateBoard:sender];
+        [self resetTimer];
     }
 }
 - (IBAction)b4Click:(UIButton *)sender {
@@ -81,6 +96,7 @@
         [hasBeenClicked addObject:@4];
         [self updatePoints:@[@0,@4]];
         [self updateBoard:sender];
+        [self resetTimer];
     }
 }
 - (IBAction)b5Click:(UIButton *)sender {
@@ -88,6 +104,7 @@
         [hasBeenClicked addObject:@5];
         [self updatePoints:@[@1,@4,@6,@7]];
         [self updateBoard:sender];
+        [self resetTimer];
     }
 }
 - (IBAction)b6Click:(UIButton *)sender {
@@ -95,6 +112,7 @@
         [hasBeenClicked addObject:@6];
         [self updatePoints:@[@2,@4]];
         [self updateBoard:sender];
+        [self resetTimer];
     }
 }
 - (IBAction)b7Click:(UIButton *)sender {
@@ -102,6 +120,7 @@
         [hasBeenClicked addObject:@7];
         [self updatePoints:@[@0,@5,@7]];
         [self updateBoard:sender];
+        [self resetTimer];
     }
 }
 - (IBAction)b8Click:(UIButton *)sender {
@@ -109,6 +128,7 @@
         [hasBeenClicked addObject:@8];
         [self updatePoints:@[@1,@5]];
         [self updateBoard:sender];
+        [self resetTimer];
     }
 }
 - (IBAction)b9Click:(UIButton *)sender {
@@ -116,6 +136,7 @@
         [hasBeenClicked addObject:@9];
         [self updatePoints:@[@2,@5,@6]];
         [self updateBoard:sender];
+        [self resetTimer];
     }
 }
 
@@ -148,6 +169,7 @@
         self.currentPlayerLabel.text = @"player 1";
         currentPlayer = 1;
     }
+    
     NSString *winner = [self checkForWinner];
     if ([winner isEqualToString:@"player 1"] || [winner isEqualToString:@"player 2"]) {
         [self resetBoard:winner];
@@ -174,7 +196,9 @@
             [p2Points replaceObjectAtIndex:i withObject:@0];
         }
         [hasBeenClicked removeAllObjects];
-        currentTurn = [@0 integerValue];
+        currentTurn = 0;
+        [self resetTimeLabel];
+        [self resetTimer];
     }];
     
     [alertController addAction:restartGame];
@@ -191,6 +215,40 @@
     }
     
     return winner;
+}
+
+-(void) startTimer{
+    timer = [NSTimer scheduledTimerWithTimeInterval:15.0
+                                     target:self
+                                   selector:@selector(changeTurn:)
+                                   userInfo:nil
+                                    repeats:NO];
+    
+}
+
+-(void) resetTimer{
+    [self resetTimeLabel];
+    [timer invalidate];
+    [self startTimer];
+}
+
+-(void) changeTurn:(NSTimer *)timer {
+    [self resetTimer];
+    if (currentPlayer == 1) {
+        currentPlayer = 2;
+        currentPlayerLabel.text = @"player 2";
+    }else{
+        currentPlayer = 1;
+        currentPlayerLabel.text = @"player 1";
+    }
+}
+
+-(void) resetTimeLabel {
+    timeLeftLabel.text = @"15";
+}
+
+-(void) updateTimeLabel:(NSTimer *)timer{
+    timeLeftLabel.text = [NSString stringWithFormat:@"%ld", [timeLeftLabel.text integerValue] - 1 ];
 }
 
 @end

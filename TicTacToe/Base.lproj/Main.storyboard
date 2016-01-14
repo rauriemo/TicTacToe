@@ -88,6 +88,16 @@
                                     <action selector="b2Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="USs-MO-UYh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXd-O3-cJO">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="orange_button"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="247" y="92" width="78" height="64"/>
+                                </variation>
+                                <connections>
+                                    <action selector="b3Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ls9-LH-ssZ"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="b1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKz-rk-yLE">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" image="orange_button">
@@ -109,16 +119,15 @@
                                     <rect key="frame" x="121" y="28" width="159" height="33"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXd-O3-cJO">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" image="orange_button"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yf-SB-qUk">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="247" y="92" width="78" height="64"/>
+                                    <rect key="frame" x="180" y="360" width="41" height="39"/>
                                 </variation>
-                                <connections>
-                                    <action selector="b3Click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ls9-LH-ssZ"/>
-                                </connections>
-                            </button>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.90433644410000003" green="0.92844169629999995" blue="0.96632308030000003" alpha="1" colorSpace="calibratedRGB"/>
                         <variation key="default">
@@ -130,9 +139,10 @@
                                 <exclude reference="hyK-JR-O3R"/>
                                 <exclude reference="hEI-nf-CLM"/>
                                 <exclude reference="Zdz-g0-OEh"/>
+                                <exclude reference="rXd-O3-cJO"/>
                                 <exclude reference="aKz-rk-yLE"/>
                                 <exclude reference="hi1-er-t90"/>
-                                <exclude reference="rXd-O3-cJO"/>
+                                <exclude reference="1yf-SB-qUk"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -144,9 +154,10 @@
                                 <include reference="hyK-JR-O3R"/>
                                 <include reference="hEI-nf-CLM"/>
                                 <include reference="Zdz-g0-OEh"/>
+                                <include reference="rXd-O3-cJO"/>
                                 <include reference="aKz-rk-yLE"/>
                                 <include reference="hi1-er-t90"/>
-                                <include reference="rXd-O3-cJO"/>
+                                <include reference="1yf-SB-qUk"/>
                             </mask>
                         </variation>
                     </view>
@@ -162,6 +173,7 @@
                         <outlet property="b8" destination="dcC-mR-y4H" id="koq-aS-Pte"/>
                         <outlet property="b9" destination="JYc-Uk-pW4" id="xJN-xm-uth"/>
                         <outlet property="currentPlayerLabel" destination="hi1-er-t90" id="M0c-7M-8nm"/>
+                        <outlet property="timeLeftLabel" destination="1yf-SB-qUk" id="rmx-e4-61w"/>
                     </connections>
                 </viewController>
             </objects>
