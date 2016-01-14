@@ -168,6 +168,7 @@
             [p1Points replaceObjectAtIndex:i withObject:@0];
             [p2Points replaceObjectAtIndex:i withObject:@0];
         }
+        [hasBeenClicked removeAllObjects];
     }];
     
     [alertController addAction:restartGame];
