@@ -7,6 +7,7 @@
 //
 
 #import "TicTacToeVC.h"
+#import "Player.h"
 
 
 @interface TicTacToeVC ()
@@ -34,17 +35,23 @@
 @property int currentTurn;
 @property NSTimer *timer;
 
+@property Player *player1;
+@property Player *player2;
+
 @end
 
 @implementation TicTacToeVC
 
-@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, currentPlayer, p2Points, p1Points, tealImg, blueImg, orangeImg, hasBeenClicked, currentTurn, timer, timeLeftLabel, currentPlayerLabel;
+@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, currentPlayer, p2Points, p1Points, tealImg, blueImg, orangeImg, hasBeenClicked, currentTurn, timer, timeLeftLabel, currentPlayerLabel, player1, player2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    p1Points = [[NSMutableArray alloc] initWithArray:@[@0,@0,@0,@0,@0,@0,@0,@0]];
-    p2Points = [[NSMutableArray alloc] initWithArray:@[@0,@0,@0,@0,@0,@0,@0,@0]];
+    player1 = [Player new];
+    player1.pointsArray = [[NSMutableArray alloc] initWithArray:@[@0,@0,@0,@0,@0,@0,@0,@0]];
+    player2 = [Player new];
+    player2.pointsArray = [[NSMutableArray alloc] initWithArray:@[@0,@0,@0,@0,@0,@0,@0,@0]];
+    
     hasBeenClicked = [NSMutableArray new];
     tealImg = [UIImage imageNamed:@"teal_button.png"];
     blueImg = [UIImage imageNamed:@"blue_button.png"];
@@ -147,12 +154,12 @@
     if (currentPlayer == 1) {
         for (int i = 0; i<indexArray.count; i++) {
             index = [indexArray objectAtIndex:i];
-            p1Points[[index integerValue]] = @([p1Points[[index integerValue]] integerValue] + 1);
+            player1.pointsArray[[index integerValue]] = @([player1.pointsArray[[index integerValue]] integerValue] + 1);
         }
     }else {
         for (int i = 0; i<indexArray.count; i++) {
             index = [indexArray objectAtIndex:i];
-            p2Points[[index integerValue]] = @([p2Points[[index integerValue]] integerValue] + 1);
+            player2.pointsArray[[index integerValue]] = @([player2.pointsArray[[index integerValue]] integerValue] + 1);
         }
     }
 }
@@ -191,9 +198,9 @@
         [b7 setImage:orangeImg forState:UIControlStateNormal];
         [b8 setImage:orangeImg forState:UIControlStateNormal];
         [b9 setImage:orangeImg forState:UIControlStateNormal];
-        for (int i=0; i<p1Points.count; i++) {
-            [p1Points replaceObjectAtIndex:i withObject:@0];
-            [p2Points replaceObjectAtIndex:i withObject:@0];
+        for (int i=0; i<player1.pointsArray.count; i++) {
+            [player1.pointsArray replaceObjectAtIndex:i withObject:@0];
+            [player2.pointsArray replaceObjectAtIndex:i withObject:@0];
         }
         [hasBeenClicked removeAllObjects];
         currentTurn = 0;
@@ -208,9 +215,9 @@
 
 -(NSString *)checkForWinner{
     NSString *winner = [NSString new];
-    if ([p1Points containsObject:@3]) {
+    if ([player1.pointsArray containsObject:@3]) {
         winner = @"player 1";
-    }else if ([p2Points containsObject:@3]) {
+    }else if ([player2.pointsArray containsObject:@3]) {
         winner = @"player 2";
     }
     

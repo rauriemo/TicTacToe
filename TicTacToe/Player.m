@@ -10,4 +10,6 @@
 
 @implementation Player
 
+@synthesize name, pointsArray;
+
 @end

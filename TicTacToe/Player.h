@@ -10,4 +10,7 @@
 
 @interface Player : NSObject
 
+@property NSString *name;
+@property NSMutableArray *pointsArray;
+
 @end
