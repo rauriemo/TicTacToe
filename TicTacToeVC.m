@@ -27,15 +27,16 @@
 @property NSMutableArray *p1Points;
 @property NSMutableArray *p2Points;
 @property NSMutableArray *hasBeenClicked;
-@property UIImage * tealImg;
-@property UIImage * blueImg;
-@property UIImage * orangeImg;
+@property UIImage *tealImg;
+@property UIImage *blueImg;
+@property UIImage *orangeImg;
+@property int currentTurn;
 
 @end
 
 @implementation TicTacToeVC
 
-@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, currentPlayer, p2Points, p1Points, tealImg, blueImg, orangeImg, hasBeenClicked;
+@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, currentPlayer, p2Points, p1Points, tealImg, blueImg, orangeImg, hasBeenClicked, currentTurn;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,7 +48,7 @@
     blueImg = [UIImage imageNamed:@"blue_button.png"];
     orangeImg = [UIImage imageNamed:@"orange_button.png"];
     currentPlayer = 1;
-   
+    currentTurn = 0;
 }
 
 //array of sum of points in rows/columns/diag in format:
@@ -118,7 +119,9 @@
     }
 }
 
+
 -(void) updatePoints:(NSArray *) indexArray {
+    currentTurn += 1;
     NSNumber *index;
     if (currentPlayer == 1) {
         for (int i = 0; i<indexArray.count; i++) {
@@ -148,11 +151,13 @@
     NSString *winner = [self checkForWinner];
     if ([winner isEqualToString:@"player 1"] || [winner isEqualToString:@"player 2"]) {
         [self resetBoard:winner];
+    }else if (currentTurn == [@9 integerValue]){
+        [self resetBoard:@"you tied"];
     }
 }
 
 -(void) resetBoard:(NSString *) winner{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You Won!" message:[NSString stringWithFormat:@"Congratulations %@!", winner] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Game Over!" message:[NSString stringWithFormat:@"Congratulations %@!", winner] preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *restartGame = [UIAlertAction actionWithTitle:@"restart" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [b1 setImage:orangeImg forState:UIControlStateNormal];
@@ -169,6 +174,7 @@
             [p2Points replaceObjectAtIndex:i withObject:@0];
         }
         [hasBeenClicked removeAllObjects];
+        currentTurn = [@0 integerValue];
     }];
     
     [alertController addAction:restartGame];
