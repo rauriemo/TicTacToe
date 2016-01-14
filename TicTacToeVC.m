@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentPlayerLabel;
 @property NSMutableArray *p1Points;
 @property NSMutableArray *p2Points;
+@property NSMutableArray *hasBeenClicked;
 @property UIImage * tealImg;
 @property UIImage * blueImg;
 @property UIImage * orangeImg;
@@ -34,13 +35,14 @@
 
 @implementation TicTacToeVC
 
-@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, currentPlayer, p2Points, p1Points, tealImg, blueImg, orangeImg;
+@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, currentPlayer, p2Points, p1Points, tealImg, blueImg, orangeImg, hasBeenClicked;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     p1Points = [[NSMutableArray alloc] initWithArray:@[@0,@0,@0,@0,@0,@0,@0,@0]];
     p2Points = [[NSMutableArray alloc] initWithArray:@[@0,@0,@0,@0,@0,@0,@0,@0]];
+    hasBeenClicked = [NSMutableArray new];
     tealImg = [UIImage imageNamed:@"teal_button.png"];
     blueImg = [UIImage imageNamed:@"blue_button.png"];
     orangeImg = [UIImage imageNamed:@"orange_button.png"];
@@ -53,40 +55,67 @@
 //[0 ,  1,  2,  3,  4,  5,  6,                          7]
 
 - (IBAction)b1Click:(UIButton *)sender {
-    [self updatePoints:@[@0,@3,@6]];
-    [self updateBoard:sender];
+    if (![hasBeenClicked containsObject:@1]) {
+        [hasBeenClicked addObject:@1];
+        [self updatePoints:@[@0,@3,@6]];
+        [self updateBoard:sender];
+    }
 }
 - (IBAction)b2Click:(UIButton *)sender {
-    [self updatePoints:@[@1,@3]];
-    [self updateBoard:sender];
+    if (![hasBeenClicked containsObject:@2]) {
+        [hasBeenClicked addObject:@2];
+        [self updatePoints:@[@1,@3]];
+        [self updateBoard:sender];
+    }
 }
 - (IBAction)b3Click:(UIButton *)sender {
-    [self updatePoints:@[@2,@3,@7]];
-    [self updateBoard:sender];
+    if (![hasBeenClicked containsObject:@3]) {
+        [hasBeenClicked addObject:@3];
+        [self updatePoints:@[@2,@3,@7]];
+        [self updateBoard:sender];
+    }
 }
 - (IBAction)b4Click:(UIButton *)sender {
-    [self updatePoints:@[@0,@4]];
-    [self updateBoard:sender];
+    if (![hasBeenClicked containsObject:@4]) {
+        [hasBeenClicked addObject:@4];
+        [self updatePoints:@[@0,@4]];
+        [self updateBoard:sender];
+    }
 }
 - (IBAction)b5Click:(UIButton *)sender {
-    [self updatePoints:@[@1,@4,@6,@7]];
-    [self updateBoard:sender];
+    if (![hasBeenClicked containsObject:@5]) {
+        [hasBeenClicked addObject:@5];
+        [self updatePoints:@[@1,@4,@6,@7]];
+        [self updateBoard:sender];
+    }
 }
 - (IBAction)b6Click:(UIButton *)sender {
-    [self updatePoints:@[@2,@4]];
-    [self updateBoard:sender];
+    if (![hasBeenClicked containsObject:@6]) {
+        [hasBeenClicked addObject:@6];
+        [self updatePoints:@[@2,@4]];
+        [self updateBoard:sender];
+    }
 }
 - (IBAction)b7Click:(UIButton *)sender {
-    [self updatePoints:@[@0,@5,@7]];
-    [self updateBoard:sender];
+    if (![hasBeenClicked containsObject:@7]) {
+        [hasBeenClicked addObject:@7];
+        [self updatePoints:@[@0,@5,@7]];
+        [self updateBoard:sender];
+    }
 }
 - (IBAction)b8Click:(UIButton *)sender {
-    [self updatePoints:@[@1,@5]];
-    [self updateBoard:sender];
+    if (![hasBeenClicked containsObject:@8]) {
+        [hasBeenClicked addObject:@8];
+        [self updatePoints:@[@1,@5]];
+        [self updateBoard:sender];
+    }
 }
 - (IBAction)b9Click:(UIButton *)sender {
-    [self updatePoints:@[@2,@5,@6]];
-    [self updateBoard:sender];
+    if (![hasBeenClicked containsObject:@9]) {
+        [hasBeenClicked addObject:@9];
+        [self updatePoints:@[@2,@5,@6]];
+        [self updateBoard:sender];
+    }
 }
 
 -(void) updatePoints:(NSArray *) indexArray {
