@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		32876F911C47370D0047ACFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32876F901C47370D0047ACFC /* main.m */; };
 		32876F941C47370D0047ACFC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32876F931C47370D0047ACFC /* AppDelegate.m */; };
-		32876F971C47370D0047ACFC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32876F961C47370D0047ACFC /* ViewController.m */; };
 		32876F9A1C47370D0047ACFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32876F981C47370D0047ACFC /* Main.storyboard */; };
 		32876F9C1C47370D0047ACFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32876F9B1C47370D0047ACFC /* Assets.xcassets */; };
 		32876F9F1C47370D0047ACFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32876F9D1C47370D0047ACFC /* LaunchScreen.storyboard */; };
 		32876FAA1C47370D0047ACFC /* TicTacToeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32876FA91C47370D0047ACFC /* TicTacToeTests.m */; };
 		32876FB51C47370D0047ACFC /* TicTacToeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 32876FB41C47370D0047ACFC /* TicTacToeUITests.m */; };
+		32876FC41C4737390047ACFC /* TicTacToeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 32876FC31C4737390047ACFC /* TicTacToeVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +39,6 @@
 		32876F901C47370D0047ACFC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32876F921C47370D0047ACFC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		32876F931C47370D0047ACFC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		32876F951C47370D0047ACFC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		32876F961C47370D0047ACFC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		32876F991C47370D0047ACFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32876F9B1C47370D0047ACFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32876F9E1C47370D0047ACFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +49,8 @@
 		32876FB01C47370D0047ACFC /* TicTacToeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32876FB41C47370D0047ACFC /* TicTacToeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicTacToeUITests.m; sourceTree = "<group>"; };
 		32876FB61C47370D0047ACFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32876FC21C4737390047ACFC /* TicTacToeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicTacToeVC.h; sourceTree = SOURCE_ROOT; };
+		32876FC31C4737390047ACFC /* TicTacToeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicTacToeVC.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +101,10 @@
 		32876F8E1C47370D0047ACFC /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				32876FC21C4737390047ACFC /* TicTacToeVC.h */,
+				32876FC31C4737390047ACFC /* TicTacToeVC.m */,
 				32876F921C47370D0047ACFC /* AppDelegate.h */,
 				32876F931C47370D0047ACFC /* AppDelegate.m */,
-				32876F951C47370D0047ACFC /* ViewController.h */,
-				32876F961C47370D0047ACFC /* ViewController.m */,
 				32876F981C47370D0047ACFC /* Main.storyboard */,
 				32876F9B1C47370D0047ACFC /* Assets.xcassets */,
 				32876F9D1C47370D0047ACFC /* LaunchScreen.storyboard */,
@@ -270,8 +270,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32876F971C47370D0047ACFC /* ViewController.m in Sources */,
 				32876F941C47370D0047ACFC /* AppDelegate.m in Sources */,
+				32876FC41C4737390047ACFC /* TicTacToeVC.m in Sources */,
 				32876F911C47370D0047ACFC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

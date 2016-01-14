@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TicTacToeVC.h
 //  TicTacToe
 //
 //  Created by Rafael Auriemo on 1/13/16.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TicTacToeVC : UIViewController
 
 @end
-
