@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TicTacToe/VsModeVC.m"
-            timestampString = "474583168.95563"
+            timestampString = "474591050.058629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
-            landmarkName = "-updatePoints:"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-b1Click:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -26,6 +26,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *currentPlayerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLeftLabel;
+@property (weak, nonatomic) IBOutlet UIButton *vsAiToggle;
+
 
 @property int currentPlayer;
 @property NSMutableArray *hasBeenClicked;
@@ -40,6 +42,7 @@
 
 //yes if difficult
 @property BOOL difficulty;
+@property BOOL aiButtonToggled;
 @property NSArray *pointCalc;
 @property NSArray *buttonArray;
 @property NSArray *buttonsInWinScenarios;
@@ -48,15 +51,17 @@
 
 @implementation VsModeVC
 
-@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, easyButton, toughButton, currentPlayerLabel, timeLeftLabel, currentPlayer, hasBeenClicked, tealImg, blueImg, orangeImg, currentTurn, timer, player1, player2, difficulty, pointCalc, buttonArray, buttonsInWinScenarios;
+@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, easyButton, toughButton, currentPlayerLabel, timeLeftLabel, currentPlayer, hasBeenClicked, tealImg, blueImg, orangeImg, currentTurn, timer, player1, player2, difficulty, pointCalc, buttonArray, buttonsInWinScenarios, aiButtonToggled;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     //reprsent[c1, c2, c3, r1, r2, r3, d1-(top left to bot right), d2]
     //indexes [0 ,  1,  2,  3,  4,  5,  6,                          7]
     player1 = [Player new];
+    player1.name = @"player1";
     player1.pointsArray = [[NSMutableArray alloc] initWithArray:@[@0,@0,@0,@0,@0,@0,@0,@0]];
     player2 = [Player new];
+    player2.name = @"player2";
     player2.pointsArray = [[NSMutableArray alloc] initWithArray:@[@0,@0,@0,@0,@0,@0,@0,@0]];
     
     pointCalc = @[@[@0,@3,@6],@[@1,@3],@[@2,@3,@7],@[@0,@4],@[@1,@4,@6,@7],@[@2,@4],@[@0,@5,@7],@[@1,@5],@[@2,@5,@6]];
@@ -70,6 +75,9 @@
     currentPlayer = 1;
     currentTurn = 0;
     difficulty = NO;
+    aiButtonToggled = NO;
+    easyButton.alpha = 0;
+    toughButton.alpha = 0;
     
     UISwipeGestureRecognizer *rightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipeHandle:)];
     rightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
@@ -111,100 +119,100 @@
 }
 
 - (IBAction)b1Click:(id)sender {
-    if (currentPlayer == 1 && ![hasBeenClicked containsObject:b1]) {
+    if ((currentPlayer == 1 && ![hasBeenClicked containsObject:b1]) || (!aiButtonToggled && ![hasBeenClicked containsObject:b1])) {
         [hasBeenClicked addObject:b1];
         [self updatePoints:@[@0,@3,@6]];
         [self updateBoard:sender];
         [self resetTimer];
-        if (currentTurn!=[@9 integerValue]) {
+        if (currentTurn!=[@9 integerValue] && aiButtonToggled) {
             [self haveAiPlay];
         }
     }
 }
 - (IBAction)b2Click:(id)sender {
-    if (currentPlayer == 1 && ![hasBeenClicked containsObject:b2]) {
+    if ((currentPlayer == 1 && ![hasBeenClicked containsObject:b2]) || (!aiButtonToggled && ![hasBeenClicked containsObject:b2])) {
         [hasBeenClicked addObject:b2];
         [self updatePoints:@[@1,@3]];
         [self updateBoard:sender];
         [self resetTimer];
-        if (currentTurn!=[@9 integerValue]) {
+        if (currentTurn!=[@9 integerValue] && aiButtonToggled) {
             [self haveAiPlay];
         }
     }
 }
 - (IBAction)b3Click:(id)sender {
-    if (currentPlayer == 1 && ![hasBeenClicked containsObject:b3]) {
+    if ((currentPlayer == 1 && ![hasBeenClicked containsObject:b3]) || (!aiButtonToggled && ![hasBeenClicked containsObject:b3])) {
         [hasBeenClicked addObject:b3];
         [self updatePoints:@[@2,@3,@7]];
         [self updateBoard:sender];
         [self resetTimer];
-        if (currentTurn!=[@9 integerValue]) {
+        if (currentTurn!=[@9 integerValue] && aiButtonToggled) {
             [self haveAiPlay];
         }
     }
 }
 - (IBAction)b4Click:(id)sender {
-    if (currentPlayer == 1 && ![hasBeenClicked containsObject:b4]) {
+    if ((currentPlayer == 1 && ![hasBeenClicked containsObject:b4]) || (!aiButtonToggled && ![hasBeenClicked containsObject:b4])) {
         [hasBeenClicked addObject:b4];
         [self updatePoints:@[@0,@4]];
         [self updateBoard:sender];
         [self resetTimer];
-        if (currentTurn!=[@9 integerValue]) {
+        if (currentTurn!=[@9 integerValue] && aiButtonToggled) {
             [self haveAiPlay];
         }
     }
 }
 - (IBAction)b5Click:(id)sender {
-    if (currentPlayer == 1 && ![hasBeenClicked containsObject:b5]) {
+    if ((currentPlayer == 1 && ![hasBeenClicked containsObject:b5]) || (!aiButtonToggled && ![hasBeenClicked containsObject:b5])) {
         [hasBeenClicked addObject:b5];
         [self updatePoints:@[@1,@4,@6,@7]];
         [self updateBoard:sender];
         [self resetTimer];
-        if (currentTurn!=[@9 integerValue]) {
+        if (currentTurn!=[@9 integerValue] && aiButtonToggled) {
             [self haveAiPlay];
         }
     }
 }
 - (IBAction)b6Click:(id)sender {
-    if (currentPlayer == 1 && ![hasBeenClicked containsObject:b6]) {
+    if ((currentPlayer == 1 && ![hasBeenClicked containsObject:b6]) || (!aiButtonToggled && ![hasBeenClicked containsObject:b6])) {
         [hasBeenClicked addObject:b6];
         [self updatePoints:@[@2,@4]];
         [self updateBoard:sender];
         [self resetTimer];
-        if (currentTurn!=[@9 integerValue]) {
+        if (currentTurn!=[@9 integerValue] && aiButtonToggled) {
             [self haveAiPlay];
         }
     }
 }
 - (IBAction)b7Click:(id)sender {
-    if (currentPlayer == 1 && ![hasBeenClicked containsObject:b7]) {
+    if ((currentPlayer == 1 && ![hasBeenClicked containsObject:b7]) || (!aiButtonToggled && ![hasBeenClicked containsObject:b7])) {
         [hasBeenClicked addObject:b7];
         [self updatePoints:@[@0,@5,@7]];
         [self updateBoard:sender];
         [self resetTimer];
-        if (currentTurn!=[@9 integerValue]) {
+        if (currentTurn!=[@9 integerValue] && aiButtonToggled) {
             [self haveAiPlay];
         }
     }
 }
 - (IBAction)b8Click:(id)sender {
-    if (currentPlayer == 1 && ![hasBeenClicked containsObject:b8]) {
+    if ((currentPlayer == 1 && ![hasBeenClicked containsObject:b8]) || (!aiButtonToggled && ![hasBeenClicked containsObject:b8])) {
         [hasBeenClicked addObject:b8];
         [self updatePoints:@[@1,@5]];
         [self updateBoard:sender];
         [self resetTimer];
-        if (currentTurn!=[@9 integerValue]) {
+        if (currentTurn!=[@9 integerValue] && aiButtonToggled) {
             [self haveAiPlay];
         }
     }
 }
 - (IBAction)b9Click:(id)sender {
-    if (currentPlayer == 1 && ![hasBeenClicked containsObject:b9]) {
+    if ((currentPlayer == 1 && ![hasBeenClicked containsObject:b9]) || (!aiButtonToggled && ![hasBeenClicked containsObject:b9])) {
         [hasBeenClicked addObject:b9];
         [self updatePoints:@[@2,@5,@6]];
         [self updateBoard:sender];
         [self resetTimer];
-        if (currentTurn!=[@9 integerValue]) {
+        if (currentTurn!=[@9 integerValue] && aiButtonToggled) {
             [self haveAiPlay];
         }
     }
@@ -215,23 +223,25 @@
         //action if AI is close to winning
         if ([player2.pointsArray containsObject:@2]) {
             BOOL picked = [self playForIndexOfPoint:player2:@2];
-            if (!picked) {
-                [self pickRandom];
+            if (picked) {
+                return;
             }
         //action if player is close to winning
-        }else if ([player1.pointsArray containsObject:@2]) {
+        }
+        if ([player1.pointsArray containsObject:@2]) {
             BOOL picked = [self playForIndexOfPoint:player1:@2];
-            if (!picked) {
-                [self pickRandom];
+            if (picked) {
+                return;
             }
         //action if AI already has 1 picked in a line
-        }else if ([player2.pointsArray containsObject:@1]) {
+        }
+        if ([player2.pointsArray containsObject:@1]) {
             BOOL picked = [self playForIndexOfPoint:player1:@1];
             if (!picked) {
                 [self pickRandom];
             }
         }else{
-           [self pickRandom];
+            [self pickRandom];
         }
     }else{
         [self pickRandom];
@@ -256,8 +266,6 @@
             if (![hasBeenClicked containsObject:winScenario[i]]) {
                 [hasBeenClicked addObject:winScenario[i]];
                 buttonChosen = [buttonArray indexOfObject:winScenario[i]];
-                NSLog(@"%lu", buttonChosen);
-                NSLog(@"passed by");
                 [self updatePoints:pointCalc[buttonChosen]];
                 [self updateBoard:winScenario[i]];
                 return YES;
@@ -305,7 +313,7 @@
     }
     
     NSString *winner = [self checkForWinner];
-    if ([winner isEqualToString:@"PLAYER"] || [winner isEqualToString:@"AI"]) {
+    if ([winner isEqualToString:player1.name] || [winner isEqualToString:player2.name]) {
         [self resetBoard:winner];
     }else if (currentTurn == [@9 integerValue]){
         [self resetBoard:@"you tied"];
@@ -344,7 +352,7 @@
     currentTurn = 0;
     [self resetTimeLabel];
     [self resetTimer];
-    if (currentPlayer == 2) {
+    if (currentPlayer == 2 && aiButtonToggled) {
         [self haveAiPlay];
     }
 }
@@ -352,9 +360,9 @@
 -(NSString *)checkForWinner{
     NSString *winner = [NSString new];
     if ([player1.pointsArray containsObject:@3]) {
-        winner = @"PLAYER";
+        winner = player1.name;
     }else if ([player2.pointsArray containsObject:@3]) {
-        winner = @"AI";
+        winner = player2.name;
     }
     
     return winner;
@@ -369,10 +377,10 @@
     [self resetTimer];
     if (currentPlayer == 1) {
         currentPlayer = 2;
-        currentPlayerLabel.text = @"AI";
+        currentPlayerLabel.text = player2.name;
     }else{
         currentPlayer = 1;
-        currentPlayerLabel.text = @"PLAYER";
+        currentPlayerLabel.text = player1.name;
     }
 }
 
@@ -399,5 +407,21 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+- (IBAction)vsAiButtonToggled:(UIButton *)sender {
+    if (aiButtonToggled) {
+        easyButton.alpha = 0;
+        toughButton.alpha = 0;
+        aiButtonToggled = NO;
+        player2.name = @"player2";
+    }else {
+        easyButton.alpha = 1;
+        toughButton.alpha = 1;
+        aiButtonToggled = YES;
+        player2.name = @"AI";
+        if (currentPlayer == 2) {
+            [self haveAiPlay];
+        }
+    }
+}
 
 @end
