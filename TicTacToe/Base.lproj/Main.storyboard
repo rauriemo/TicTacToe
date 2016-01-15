@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tic Tac ToeVC-->
@@ -166,7 +167,11 @@
                                 <segue destination="JbW-nk-muX" kind="show" id="heq-7j-pQN"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem title="help" id="Cty-zg-rhp"/>
+                        <barButtonItem title="help" id="Cty-zg-rhp">
+                            <connections>
+                                <segue destination="kaI-pL-tE0" kind="presentation" id="tlK-oy-SHc"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="YEX-fz-LST"/>
                     <connections>
@@ -186,6 +191,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1297.5" y="298"/>
+        </scene>
+        <!--Web ViewVC-->
+        <scene sceneID="Mmm-cU-WJg">
+            <objects>
+                <viewController id="kaI-pL-tE0" customClass="WebViewVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Nh-YT-eyu"/>
+                        <viewControllerLayoutGuide type="bottom" id="vcB-Jh-EFG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YnX-LA-bgp">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPX-BD-SdY">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZVt-S2-JdU">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <color key="color" red="0.41456604089999999" green="0.44916888849999997" blue="0.64712394770000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vK-fQ-2Ml">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="exitModalButtonTapped:" destination="kaI-pL-tE0" eventType="touchUpInside" id="dwr-Dx-wBW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="SPX-BD-SdY" secondAttribute="trailing" constant="-20" id="2NA-WI-afx"/>
+                            <constraint firstItem="vcB-Jh-EFG" firstAttribute="top" secondItem="SPX-BD-SdY" secondAttribute="bottom" id="Bpu-Wy-lRI"/>
+                            <constraint firstItem="SPX-BD-SdY" firstAttribute="leading" secondItem="YnX-LA-bgp" secondAttribute="leadingMargin" constant="-20" id="D0j-zg-0D2"/>
+                            <constraint firstItem="ZVt-S2-JdU" firstAttribute="centerX" secondItem="YnX-LA-bgp" secondAttribute="centerX" id="F06-4A-SWs"/>
+                            <constraint firstItem="ZVt-S2-JdU" firstAttribute="centerY" secondItem="YnX-LA-bgp" secondAttribute="centerY" id="LJY-GT-ZES"/>
+                            <constraint firstItem="9vK-fQ-2Ml" firstAttribute="top" secondItem="8Nh-YT-eyu" secondAttribute="bottom" constant="8" id="Us5-hk-8D5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9vK-fQ-2Ml" secondAttribute="trailing" constant="-9" id="XOe-oW-t9m"/>
+                            <constraint firstItem="SPX-BD-SdY" firstAttribute="top" secondItem="8Nh-YT-eyu" secondAttribute="bottom" id="abB-HQ-Bye"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="SPX-BD-SdY"/>
+                                <exclude reference="ZVt-S2-JdU"/>
+                                <exclude reference="9vK-fQ-2Ml"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="2NA-WI-afx"/>
+                                <exclude reference="D0j-zg-0D2"/>
+                                <exclude reference="abB-HQ-Bye"/>
+                                <exclude reference="F06-4A-SWs"/>
+                                <exclude reference="LJY-GT-ZES"/>
+                                <exclude reference="Us5-hk-8D5"/>
+                                <exclude reference="XOe-oW-t9m"/>
+                                <exclude reference="Bpu-Wy-lRI"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="SPX-BD-SdY"/>
+                                <include reference="ZVt-S2-JdU"/>
+                                <include reference="9vK-fQ-2Ml"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="2NA-WI-afx"/>
+                                <include reference="D0j-zg-0D2"/>
+                                <include reference="abB-HQ-Bye"/>
+                                <include reference="F06-4A-SWs"/>
+                                <include reference="LJY-GT-ZES"/>
+                                <include reference="Us5-hk-8D5"/>
+                                <include reference="XOe-oW-t9m"/>
+                                <include reference="Bpu-Wy-lRI"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems>
+                        <barButtonItem title="back" id="cd5-Lh-bId"/>
+                    </toolbarItems>
+                    <connections>
+                        <outlet property="activityIndicator" destination="ZVt-S2-JdU" id="1zF-UI-jbb"/>
+                        <outlet property="webView" destination="SPX-BD-SdY" id="iaT-0y-rbo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hbh-4K-UbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1638" y="1080"/>
         </scene>
         <!--Vs ModeVC-->
         <scene sceneID="I3T-wD-jBm">
@@ -378,7 +468,11 @@
                                 <segue destination="l2b-mV-CmG" kind="unwind" unwindAction="unwindToRoot:" id="fe0-Sa-VeR"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem title="help" id="8VA-gK-AeR"/>
+                        <barButtonItem title="help" id="8VA-gK-AeR">
+                            <connections>
+                                <segue destination="kaI-pL-tE0" kind="presentation" id="2Fa-ht-24h"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <connections>
                         <outlet property="b1" destination="edJ-TU-vxn" id="TVw-id-XPq"/>
@@ -426,4 +520,7 @@
     <resources>
         <image name="orange_button" width="64" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="2Fa-ht-24h"/>
+    </inferredMetricsTieBreakers>
 </document>
