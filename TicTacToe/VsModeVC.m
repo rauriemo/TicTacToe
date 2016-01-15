@@ -208,15 +208,29 @@
     if (difficulty == YES) {
         //action if player is close to winning
         if ([player1.pointsArray containsObject:@2]) {
-            NSUInteger index=[player1.pointsArray indexOfObject:@2];
-            NSArray *winScenario = buttonsInWinScenarios[index];
-            for (int i =0; i<winScenario.count; i++) {
-                if (![hasBeenClicked containsObject:winScenario[i]]) {
-                    [hasBeenClicked addObject:winScenario[i]];
-                    NSUInteger index = [buttonArray indexOfObject:winScenario[i]];
-                    [self updatePoints:pointCalc[index]];
-                    [self updateBoard:winScenario[i]];
-                    return;
+            NSIndexSet *indexSet=[player1.pointsArray indexesOfObjectsPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                return [obj isEqualToNumber:@2];
+            }];
+            NSMutableArray *indexArray=[NSMutableArray new];
+            
+            [indexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+                [indexArray addObject:[NSNumber numberWithInteger:idx]];
+            }];
+            
+            for (int i=0; i<indexArray.count; i++) {
+                int currentIndex = [indexArray[i] integerValue];
+                NSArray *winScenario = buttonsInWinScenarios[currentIndex];
+                NSUInteger buttonChosen;
+                for (int i =0; i<winScenario.count; i++) {
+                    if (![hasBeenClicked containsObject:winScenario[i]]) {
+                        [hasBeenClicked addObject:winScenario[i]];
+                        buttonChosen = [buttonArray indexOfObject:winScenario[i]];
+                        NSLog(@"%lu", buttonChosen);
+                        NSLog(@"passed by");
+                        [self updatePoints:pointCalc[buttonChosen]];
+                        [self updateBoard:winScenario[i]];
+                        return;
+                    }
                 }
             }
             [self pickRandom];
