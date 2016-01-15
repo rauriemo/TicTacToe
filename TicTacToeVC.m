@@ -167,13 +167,10 @@
     
     if (currentPlayer == 1) {
         [sender setImage:tealImg forState:UIControlStateNormal];
-        self.currentPlayerLabel.text = @"player 2";
-        currentPlayer = 2;
     }else {
         [sender setImage:blueImg forState:UIControlStateNormal];
-        self.currentPlayerLabel.text = @"player 1";
-        currentPlayer = 1;
     }
+    [self changeTurn:timer];
     
     NSString *winner = [self checkForWinner];
     if ([winner isEqualToString:@"player 1"] || [winner isEqualToString:@"player 2"]) {
