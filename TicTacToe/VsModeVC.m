@@ -40,20 +40,28 @@
 
 //yes if difficult
 @property BOOL difficulty;
+@property NSArray *pointCalc;
+@property NSArray *buttonArray;
+@property NSArray *buttonsInWinScenarios;
 
 @end
 
 @implementation VsModeVC
 
-@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, easyButton, toughButton, currentPlayerLabel, timeLeftLabel, currentPlayer, hasBeenClicked, tealImg, blueImg, orangeImg, currentTurn, timer, player1, player2, difficulty;
+@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, easyButton, toughButton, currentPlayerLabel, timeLeftLabel, currentPlayer, hasBeenClicked, tealImg, blueImg, orangeImg, currentTurn, timer, player1, player2, difficulty, pointCalc, buttonArray, buttonsInWinScenarios;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    //reprsent[c1, c2, c3, r1, r2, r3, d1-(top left to bot right), d2]
+    //indexes [0 ,  1,  2,  3,  4,  5,  6,                          7]
     player1 = [Player new];
     player1.pointsArray = [[NSMutableArray alloc] initWithArray:@[@0,@0,@0,@0,@0,@0,@0,@0]];
     player2 = [Player new];
     player2.pointsArray = [[NSMutableArray alloc] initWithArray:@[@0,@0,@0,@0,@0,@0,@0,@0]];
+    
+    pointCalc = @[@[@0,@3,@6],@[@1,@3],@[@2,@3,@7],@[@0,@4],@[@1,@4,@6,@7],@[@2,@4],@[@0,@5,@7],@[@1,@5],@[@2,@5,@6]];
+    buttonArray = @[b1, b2, b3, b4, b5, b6, b7, b8, b9];
+    buttonsInWinScenarios = @[@[b1,b4,b7],@[b2,b5,b8],@[b3,b6,b9],@[b1,b2,b3],@[b4,b5,b6],@[b7,b8,b9],@[b1,b5,b9],@[b3,b5,b7]];
     
     hasBeenClicked = [NSMutableArray new];
     tealImg = [UIImage imageNamed:@"teal_button.png"];
@@ -197,28 +205,41 @@
 }
 
 -(void) haveAiPlay{
-    NSArray *pointCalc = @[@[@0,@3,@6],@[@1,@3],@[@2,@3,@7],@[@0,@4],@[@1,@4,@6,@7],@[@2,@4],@[@0,@5,@7],@[@1,@5],@[@2,@5,@6]];
-    NSArray *buttonArray = @[b1, b2, b3, b4, b5, b6, b7, b8, b9];
     if (difficulty == YES) {
+        //action if player is close to winning
         if ([player1.pointsArray containsObject:@2]) {
-            NSUInteger *index=[player1.pointsArray indexOfObject:@2];
-            
-        }else if ([player2.pointsArray containsObject:@2]){
-            
+            NSUInteger index=[player1.pointsArray indexOfObject:@2];
+            NSArray *winScenario = buttonsInWinScenarios[index];
+            for (int i =0; i<winScenario.count; i++) {
+                if (![hasBeenClicked containsObject:winScenario[i]]) {
+                    [hasBeenClicked addObject:winScenario[i]];
+                    NSUInteger index = [buttonArray indexOfObject:winScenario[i]];
+                    [self updatePoints:pointCalc[index]];
+                    [self updateBoard:winScenario[i]];
+                    return;
+                }
+            }
+            [self pickRandom];
+        }else{
+           [self pickRandom];
         }
     }else{
-        BOOL picked = NO;
-        while (!picked) {
-            NSInteger randomIndexInSet = arc4random() % [buttonArray count];
-            if (![hasBeenClicked containsObject:buttonArray[randomIndexInSet]]) {
-                [hasBeenClicked addObject:buttonArray[randomIndexInSet]];
-                [self updatePoints:(pointCalc[randomIndexInSet])];
-                [self updateBoard:buttonArray[randomIndexInSet]];
-                 picked = YES;
-            }
-        }
+        [self pickRandom];
     }
     
+}
+
+-(void) pickRandom{
+    BOOL picked = NO;
+    while (!picked) {
+        NSInteger randomIndexInSet = arc4random() % [buttonArray count];
+        if (![hasBeenClicked containsObject:buttonArray[randomIndexInSet]]) {
+            [hasBeenClicked addObject:buttonArray[randomIndexInSet]];
+            [self updatePoints:(pointCalc[randomIndexInSet])];
+            [self updateBoard:buttonArray[randomIndexInSet]];
+            picked = YES;
+        }
+    }
 }
 
 -(void) updatePoints:(NSArray *) indexArray {
@@ -306,6 +327,7 @@
     if (currentPlayer == 1) {
         currentPlayer = 2;
         currentPlayerLabel.text = @"AI";
+        
     }else{
         currentPlayer = 1;
         currentPlayerLabel.text = @"PLAYER";
