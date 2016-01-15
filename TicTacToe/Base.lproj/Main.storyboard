@@ -320,7 +320,7 @@
                                     <action selector="changeDifficulty:" destination="JbW-nk-muX" eventType="touchUpInside" id="stz-IE-oRo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzz-f5-Erh">
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzz-f5-Erh">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="16"/>
                                 <state key="normal" title="easy">
@@ -371,7 +371,11 @@
                         </variation>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="back" id="jJl-pl-TX8"/>
+                        <barButtonItem title="back" id="jJl-pl-TX8">
+                            <connections>
+                                <segue destination="l2b-mV-CmG" kind="unwind" unwindAction="unwindToRoot:" id="fe0-Sa-VeR"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <connections>
                         <outlet property="b1" destination="edJ-TU-vxn" id="TVw-id-XPq"/>
@@ -384,10 +388,13 @@
                         <outlet property="b8" destination="AkR-cc-P2B" id="qKr-X1-jEH"/>
                         <outlet property="b9" destination="N4p-yK-b5l" id="mgh-FZ-sGI"/>
                         <outlet property="currentPlayerLabel" destination="CdV-xX-gIf" id="A9Y-do-bPa"/>
+                        <outlet property="easyButton" destination="nzz-f5-Erh" id="a2g-4Z-ryp"/>
                         <outlet property="timeLeftLabel" destination="CVQ-79-B3E" id="ycC-TL-hrQ"/>
+                        <outlet property="toughButton" destination="zcY-rk-ApJ" id="p8q-Op-0QE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2z-Dg-bY6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="l2b-mV-CmG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2016" y="298"/>
         </scene>

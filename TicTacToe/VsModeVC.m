@@ -21,6 +21,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *b8;
 @property (weak, nonatomic) IBOutlet UIButton *b9;
 
+@property (weak, nonatomic) IBOutlet UIButton *easyButton;
+@property (weak, nonatomic) IBOutlet UIButton *toughButton;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *currentPlayerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLeftLabel;
 
@@ -42,7 +46,7 @@
 
 @implementation VsModeVC
 
-@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, currentPlayerLabel, timeLeftLabel, currentPlayer, hasBeenClicked, tealImg, blueImg, orangeImg, currentTurn, timer, player1, player2, difficulty;
+@synthesize b1, b2, b3, b4, b5, b6, b7, b8, b9, easyButton, toughButton, currentPlayerLabel, timeLeftLabel, currentPlayer, hasBeenClicked, tealImg, blueImg, orangeImg, currentTurn, timer, player1, player2, difficulty;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -129,8 +133,12 @@
 - (IBAction)changeDifficulty:(UIButton *)sender {
     if ([sender.currentTitle isEqualToString: @"tough"]) {
         difficulty = YES;
+        toughButton.selected = YES;
+        easyButton.selected = NO;
     }else{
         difficulty = NO;
+        easyButton.selected = YES;
+        toughButton.selected = NO;
     }
 }
 
