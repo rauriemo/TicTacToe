@@ -197,6 +197,8 @@
 }
 
 -(void) haveAiPlay{
+    NSArray *pointCalc = @[@[@0,@3,@6],@[@1,@3],@[@2,@3,@7],@[@0,@4],@[@1,@4,@6,@7],@[@2,@4],@[@0,@5,@7],@[@1,@5],@[@2,@5,@6]];
+    NSArray *buttonArray = @[b1, b2, b3, b4, b5, b6, b7, b8, b9];
     if (difficulty == YES) {
         if ([player1.pointsArray containsObject:@2]) {
             NSUInteger *index=[player1.pointsArray indexOfObject:@2];
@@ -205,8 +207,6 @@
             
         }
     }else{
-        NSArray *buttonArray = @[b1, b2, b3, b4, b5, b6, b7, b8, b9];
-        NSArray *pointCalc = @[@[@0,@3,@6],@[@1,@3],@[@2,@3,@7],@[@0,@4],@[@1,@4,@6,@7],@[@2,@4],@[@0,@5,@7],@[@1,@5],@[@2,@5,@6]];
         BOOL picked = NO;
         while (!picked) {
             NSInteger randomIndexInSet = arc4random() % [buttonArray count];
@@ -318,10 +318,16 @@
         difficulty = YES;
         toughButton.selected = YES;
         easyButton.selected = NO;
+        if (currentPlayer == 2) {
+            [self haveAiPlay];
+        }
     }else{
         difficulty = NO;
         easyButton.selected = YES;
         toughButton.selected = NO;
+        if (currentPlayer == 2) {
+            [self haveAiPlay];
+        }
     }
 }
 
