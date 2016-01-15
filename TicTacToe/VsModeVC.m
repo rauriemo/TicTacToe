@@ -206,41 +206,53 @@
 
 -(void) haveAiPlay{
     if (difficulty == YES) {
-        //action if player is close to winning
-        if ([player1.pointsArray containsObject:@2]) {
-            NSIndexSet *indexSet=[player1.pointsArray indexesOfObjectsPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                return [obj isEqualToNumber:@2];
-            }];
-            NSMutableArray *indexArray=[NSMutableArray new];
-            
-            [indexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-                [indexArray addObject:[NSNumber numberWithInteger:idx]];
-            }];
-            
-            for (int i=0; i<indexArray.count; i++) {
-                int currentIndex = [indexArray[i] integerValue];
-                NSArray *winScenario = buttonsInWinScenarios[currentIndex];
-                NSUInteger buttonChosen;
-                for (int i =0; i<winScenario.count; i++) {
-                    if (![hasBeenClicked containsObject:winScenario[i]]) {
-                        [hasBeenClicked addObject:winScenario[i]];
-                        buttonChosen = [buttonArray indexOfObject:winScenario[i]];
-                        NSLog(@"%lu", buttonChosen);
-                        NSLog(@"passed by");
-                        [self updatePoints:pointCalc[buttonChosen]];
-                        [self updateBoard:winScenario[i]];
-                        return;
-                    }
-                }
+        //action if AI is close to winning
+        if ([player2.pointsArray containsObject:@2]) {
+            BOOL picked = [self threePointPLay:player2];
+            if (!picked) {
+                [self pickRandom];
             }
-            [self pickRandom];
+        //action if player is close to winning
+        }else if ([player1.pointsArray containsObject:@2]) {
+            BOOL picked = [self threePointPLay:player1];
+            if (!picked) {
+                [self pickRandom];
+            }
         }else{
            [self pickRandom];
         }
     }else{
         [self pickRandom];
     }
+}
+
+-(BOOL) threePointPLay:(Player *)player{
+    NSIndexSet *indexSet=[player.pointsArray indexesOfObjectsPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [obj isEqualToNumber:@2];
+    }];
+    NSMutableArray *indexArray=[NSMutableArray new];
     
+    [indexSet enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+        [indexArray addObject:[NSNumber numberWithInteger:idx]];
+    }];
+    
+    for (int i=0; i<indexArray.count; i++) {
+        int currentIndex = [indexArray[i] integerValue];
+        NSArray *winScenario = buttonsInWinScenarios[currentIndex];
+        NSUInteger buttonChosen;
+        for (int i =0; i<winScenario.count; i++) {
+            if (![hasBeenClicked containsObject:winScenario[i]]) {
+                [hasBeenClicked addObject:winScenario[i]];
+                buttonChosen = [buttonArray indexOfObject:winScenario[i]];
+                NSLog(@"%lu", buttonChosen);
+                NSLog(@"passed by");
+                [self updatePoints:pointCalc[buttonChosen]];
+                [self updateBoard:winScenario[i]];
+                return YES;
+            }
+        }
+    }
+    return NO;
 }
 
 -(void) pickRandom{
