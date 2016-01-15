@@ -9,7 +9,7 @@
         <!--Tic Tac ToeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TicTacToeVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pvpVC" id="BYZ-38-t0r" customClass="TicTacToeVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -280,7 +280,7 @@
         <!--Vs ModeVC-->
         <scene sceneID="I3T-wD-jBm">
             <objects>
-                <viewController id="JbW-nk-muX" customClass="VsModeVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="vsAiVC" id="JbW-nk-muX" customClass="VsModeVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gqw-La-Qss"/>
                         <viewControllerLayoutGuide type="bottom" id="cLk-cg-Scp"/>
@@ -521,6 +521,6 @@
         <image name="orange_button" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2Fa-ht-24h"/>
+        <segue reference="tlK-oy-SHc"/>
     </inferredMetricsTieBreakers>
 </document>

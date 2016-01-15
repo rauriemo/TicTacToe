@@ -70,6 +70,12 @@
     currentPlayer = 1;
     currentTurn = 0;
     difficulty = NO;
+    
+    UISwipeGestureRecognizer *rightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipeHandle:)];
+    rightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [rightRecognizer setNumberOfTouchesRequired:1];
+    
+    [self.view addGestureRecognizer:rightRecognizer];
 
 }
 
@@ -389,6 +395,9 @@
     }
 }
 
+- (void)rightSwipeHandle:(UISwipeGestureRecognizer*)gestureRecognizer {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 
 @end

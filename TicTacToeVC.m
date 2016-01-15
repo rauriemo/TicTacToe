@@ -8,6 +8,7 @@
 
 #import "TicTacToeVC.h"
 #import "Player.h"
+#import "VsModeVC.h"
 
 
 @interface TicTacToeVC ()
@@ -56,6 +57,13 @@
     orangeImg = [UIImage imageNamed:@"orange_button.png"];
     currentPlayer = 1;
     currentTurn = 0;
+    
+    
+    UISwipeGestureRecognizer *leftRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(leftSwipeHandle:)];
+    leftRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [leftRecognizer setNumberOfTouchesRequired:1];
+    
+    [self.view addGestureRecognizer:leftRecognizer];
     
 }
 
@@ -254,6 +262,13 @@
 
 -(void) updateTimeLabel:(NSTimer *)timer{
     timeLeftLabel.text = [NSString stringWithFormat:@"%ld", [timeLeftLabel.text integerValue] - 1 ];
+}
+
+//on swipe left move to VsModeVC
+- (void)leftSwipeHandle:(UISwipeGestureRecognizer*)gestureRecognizer {
+    UIStoryboard *storyboard = self.storyboard;
+    VsModeVC *viewController = (VsModeVC *)[storyboard instantiateViewControllerWithIdentifier:@"vsAiVC"];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 -(IBAction)unwindToRoot:(UIStoryboardSegue *)unwindSegue{
