@@ -208,13 +208,19 @@
     if (difficulty == YES) {
         //action if AI is close to winning
         if ([player2.pointsArray containsObject:@2]) {
-            BOOL picked = [self threePointPLay:player2];
+            BOOL picked = [self playForIndexOfPoint:player2:@2];
             if (!picked) {
                 [self pickRandom];
             }
         //action if player is close to winning
         }else if ([player1.pointsArray containsObject:@2]) {
-            BOOL picked = [self threePointPLay:player1];
+            BOOL picked = [self playForIndexOfPoint:player1:@2];
+            if (!picked) {
+                [self pickRandom];
+            }
+        //action if AI already has 1 picked in a line
+        }else if ([player2.pointsArray containsObject:@1]) {
+            BOOL picked = [self playForIndexOfPoint:player1:@1];
             if (!picked) {
                 [self pickRandom];
             }
@@ -226,9 +232,9 @@
     }
 }
 
--(BOOL) threePointPLay:(Player *)player{
+-(BOOL) playForIndexOfPoint:(Player *)player :(NSNumber *)pointToFind{
     NSIndexSet *indexSet=[player.pointsArray indexesOfObjectsPassingTest:^BOOL(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        return [obj isEqualToNumber:@2];
+        return [obj isEqualToNumber:pointToFind];
     }];
     NSMutableArray *indexArray=[NSMutableArray new];
     

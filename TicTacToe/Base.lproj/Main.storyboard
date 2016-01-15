@@ -121,7 +121,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1yf-SB-qUk">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="180" y="360" width="41" height="39"/>
@@ -166,6 +166,7 @@
                                 <segue destination="JbW-nk-muX" kind="show" id="heq-7j-pQN"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem title="help" id="Cty-zg-rhp"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="YEX-fz-LST"/>
                     <connections>
@@ -302,7 +303,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVQ-79-B3E">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="180" y="360" width="41" height="39"/>
@@ -377,6 +378,7 @@
                                 <segue destination="l2b-mV-CmG" kind="unwind" unwindAction="unwindToRoot:" id="fe0-Sa-VeR"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem title="help" id="8VA-gK-AeR"/>
                     </toolbarItems>
                     <connections>
                         <outlet property="b1" destination="edJ-TU-vxn" id="TVw-id-XPq"/>
