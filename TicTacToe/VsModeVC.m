@@ -24,7 +24,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *easyButton;
 @property (weak, nonatomic) IBOutlet UIButton *toughButton;
 
-
 @property (weak, nonatomic) IBOutlet UILabel *currentPlayerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLeftLabel;
 
@@ -96,7 +95,7 @@
         currentPlayerLabel.text = @"AI";
     }else{
         currentPlayer = 1;
-        currentPlayerLabel.text = @"YOU";
+        currentPlayerLabel.text = @"PLAYER";
     }
 }
 
@@ -109,25 +108,160 @@
 }
 
 - (IBAction)b1Click:(id)sender {
+    if (currentPlayer == 1 && ![hasBeenClicked containsObject:@1]) {
+            [hasBeenClicked addObject:@1];
+            [self updatePoints:@[@0,@3,@6]];
+            [self updateBoard:sender];
+            [self resetTimer];
+    }
 }
 - (IBAction)b2Click:(id)sender {
+    if (currentPlayer == 1 && ![hasBeenClicked containsObject:@2]) {
+        [hasBeenClicked addObject:@2];
+        [self updatePoints:@[@1,@3]];
+        [self updateBoard:sender];
+        [self resetTimer];
+    }
 }
 - (IBAction)b3Click:(id)sender {
+    if (currentPlayer == 1 && ![hasBeenClicked containsObject:@3]) {
+        [hasBeenClicked addObject:@3];
+        [self updatePoints:@[@2,@3,@7]];
+        [self updateBoard:sender];
+        [self resetTimer];
+    }
 }
 - (IBAction)b4Click:(id)sender {
+    if (currentPlayer == 1 && ![hasBeenClicked containsObject:@4]) {
+        [hasBeenClicked addObject:@4];
+        [self updatePoints:@[@0,@4]];
+        [self updateBoard:sender];
+        [self resetTimer];
+    }
 }
 - (IBAction)b5Click:(id)sender {
+    if (currentPlayer == 1 && ![hasBeenClicked containsObject:@5]) {
+        [hasBeenClicked addObject:@5];
+        [self updatePoints:@[@1,@4,@6,@7]];
+        [self updateBoard:sender];
+        [self resetTimer];
+    }
 }
 - (IBAction)b6Click:(id)sender {
+    if (currentPlayer == 1 && ![hasBeenClicked containsObject:@6]) {
+        [hasBeenClicked addObject:@6];
+        [self updatePoints:@[@2,@4]];
+        [self updateBoard:sender];
+        [self resetTimer];
+    }
 }
 - (IBAction)b7Click:(id)sender {
+    if (currentPlayer == 1 && ![hasBeenClicked containsObject:@7]) {
+        [hasBeenClicked addObject:@7];
+        [self updatePoints:@[@0,@5,@7]];
+        [self updateBoard:sender];
+        [self resetTimer];
+    }
 }
 - (IBAction)b8Click:(id)sender {
+    if (currentPlayer == 1 && ![hasBeenClicked containsObject:@8]) {
+        [hasBeenClicked addObject:@8];
+        [self updatePoints:@[@1,@5]];
+        [self updateBoard:sender];
+        [self resetTimer];
+    }
 }
 - (IBAction)b9Click:(id)sender {
+    if (currentPlayer == 1 && ![hasBeenClicked containsObject:@9]) {
+        [hasBeenClicked addObject:@9];
+        [self updatePoints:@[@2,@5,@6]];
+        [self updateBoard:sender];
+        [self resetTimer];
+    }
 }
 
+-(void) haveAiPlay{
+    
+}
 
+-(void) updatePoints:(NSArray *) indexArray {
+    currentTurn += 1;
+    NSNumber *index;
+    if (currentPlayer == 1) {
+        for (int i = 0; i<indexArray.count; i++) {
+            index = [indexArray objectAtIndex:i];
+            player1.pointsArray[[index integerValue]] = @([player1.pointsArray[[index integerValue]] integerValue] + 1);
+        }
+    }else {
+        for (int i = 0; i<indexArray.count; i++) {
+            index = [indexArray objectAtIndex:i];
+            player2.pointsArray[[index integerValue]] = @([player2.pointsArray[[index integerValue]] integerValue] + 1);
+        }
+    }
+}
+
+-(void) updateBoard:(UIButton *)sender {
+    
+    if (currentPlayer == 1) {
+        [sender setImage:tealImg forState:UIControlStateNormal];
+        currentPlayerLabel.text = @"AI";
+        currentPlayer = 2;
+    }else {
+        [sender setImage:blueImg forState:UIControlStateNormal];
+        currentPlayerLabel.text = @"PLAYER";
+        currentPlayer = 1;
+    }
+    
+    NSString *winner = [self checkForWinner];
+    if ([winner isEqualToString:@"PLAYER"] || [winner isEqualToString:@"AI"]) {
+        [self resetBoard:winner];
+    }else if (currentTurn == [@9 integerValue]){
+        [self resetBoard:@"you tied"];
+    }
+}
+
+-(void) resetBoard:(NSString *) winner{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Game Over!" message:[NSString stringWithFormat:@"Congratulations %@!", winner] preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *restartGame = [UIAlertAction actionWithTitle:@"restart" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self resetGame];
+    }];
+    
+    [alertController addAction:restartGame];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+-(void) resetGame{
+    [b1 setImage:orangeImg forState:UIControlStateNormal];
+    [b2 setImage:orangeImg forState:UIControlStateNormal];
+    [b3 setImage:orangeImg forState:UIControlStateNormal];
+    [b4 setImage:orangeImg forState:UIControlStateNormal];
+    [b5 setImage:orangeImg forState:UIControlStateNormal];
+    [b6 setImage:orangeImg forState:UIControlStateNormal];
+    [b7 setImage:orangeImg forState:UIControlStateNormal];
+    [b8 setImage:orangeImg forState:UIControlStateNormal];
+    [b9 setImage:orangeImg forState:UIControlStateNormal];
+    for (int i=0; i<player1.pointsArray.count; i++) {
+        [player1.pointsArray replaceObjectAtIndex:i withObject:@0];
+        [player2.pointsArray replaceObjectAtIndex:i withObject:@0];
+    }
+    [hasBeenClicked removeAllObjects];
+    currentTurn = 0;
+    [self resetTimeLabel];
+    [self resetTimer];
+}
+
+-(NSString *)checkForWinner{
+    NSString *winner = [NSString new];
+    if ([player1.pointsArray containsObject:@3]) {
+        winner = @"PLAYER";
+    }else if ([player2.pointsArray containsObject:@3]) {
+        winner = @"AI";
+    }
+    
+    return winner;
+}
 
 
 - (IBAction)changeDifficulty:(UIButton *)sender {
