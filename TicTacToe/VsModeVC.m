@@ -85,7 +85,7 @@
 -(void) startTimer{
     timer = [NSTimer scheduledTimerWithTimeInterval:15.0
                                              target:self
-                                           selector:@selector(changeTurn:)
+                                           selector:@selector(switchPlayer:)
                                            userInfo:nil
                                             repeats:NO];
 }
@@ -287,7 +287,7 @@
         [self resetBoard:@"you tied"];
     }
     
-    [self changeTurn:timer];
+    [self changeTurn];
 }
 
 -(void) resetBoard:(NSString *) winner{
@@ -336,12 +336,16 @@
     return winner;
 }
 
--(void) changeTurn:(NSTimer *)timer {
+-(void) switchPlayer:(NSTimer *)timer{
+    [self changeTurn];
+    [self haveAiPlay];
+}
+
+-(void) changeTurn {
     [self resetTimer];
     if (currentPlayer == 1) {
         currentPlayer = 2;
         currentPlayerLabel.text = @"AI";
-        
     }else{
         currentPlayer = 1;
         currentPlayerLabel.text = @"PLAYER";

@@ -8,7 +8,6 @@
         <!--Tic Tac ToeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="TicTacToeVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
@@ -183,6 +182,7 @@
                         <outlet property="timeLeftLabel" destination="1yf-SB-qUk" id="rmx-e4-61w"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1297.5" y="298"/>
         </scene>
@@ -195,6 +195,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cLk-cg-Scp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="pfV-VS-Dwm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oes-8R-7gW">
