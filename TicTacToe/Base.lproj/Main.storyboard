@@ -78,7 +78,7 @@
                                 </constraints>
                                 <state key="normal" image="orange_button"/>
                                 <connections>
-                                    <action selector="b7Click:" destination="JbW-nk-muX" eventType="touchUpInside" id="r0f-Z4-MnD"/>
+                                    <action selector="buttonTapped:" destination="JbW-nk-muX" eventType="touchUpInside" id="L6p-Ij-gEF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkR-cc-P2B">
@@ -88,7 +88,7 @@
                                 </constraints>
                                 <state key="normal" image="orange_button"/>
                                 <connections>
-                                    <action selector="b8Click:" destination="JbW-nk-muX" eventType="touchUpInside" id="msd-Rx-lAD"/>
+                                    <action selector="buttonTapped:" destination="JbW-nk-muX" eventType="touchUpInside" id="49z-pw-H0i"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4p-yK-b5l">
@@ -98,7 +98,7 @@
                                 </constraints>
                                 <state key="normal" image="orange_button"/>
                                 <connections>
-                                    <action selector="b9Click:" destination="JbW-nk-muX" eventType="touchUpInside" id="tks-6j-dPG"/>
+                                    <action selector="buttonTapped:" destination="JbW-nk-muX" eventType="touchUpInside" id="1Sp-SS-SWB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLD-Nl-txe">
@@ -108,7 +108,7 @@
                                 </constraints>
                                 <state key="normal" image="orange_button"/>
                                 <connections>
-                                    <action selector="b5Click:" destination="JbW-nk-muX" eventType="touchUpInside" id="jp4-0L-9Wp"/>
+                                    <action selector="buttonTapped:" destination="JbW-nk-muX" eventType="touchUpInside" id="IT7-az-Mv0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKs-NH-y5w">
@@ -118,7 +118,7 @@
                                 </constraints>
                                 <state key="normal" image="orange_button"/>
                                 <connections>
-                                    <action selector="b6Click:" destination="JbW-nk-muX" eventType="touchUpInside" id="1wk-Jv-NpF"/>
+                                    <action selector="buttonTapped:" destination="JbW-nk-muX" eventType="touchUpInside" id="fo3-3C-bBW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHd-qz-BDI">
@@ -128,7 +128,7 @@
                                 </constraints>
                                 <state key="normal" image="orange_button"/>
                                 <connections>
-                                    <action selector="b4Click:" destination="JbW-nk-muX" eventType="touchUpInside" id="yJR-eu-ZhK"/>
+                                    <action selector="buttonTapped:" destination="JbW-nk-muX" eventType="touchUpInside" id="z41-1P-Qx1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1P0-f2-FDZ">
@@ -138,7 +138,7 @@
                                 </constraints>
                                 <state key="normal" image="orange_button"/>
                                 <connections>
-                                    <action selector="b2Click:" destination="JbW-nk-muX" eventType="touchUpInside" id="5OG-Ug-Bgl"/>
+                                    <action selector="buttonTapped:" destination="JbW-nk-muX" eventType="touchUpInside" id="eE6-XN-VqS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyJ-QP-DM0">
@@ -148,7 +148,7 @@
                                 </constraints>
                                 <state key="normal" image="orange_button"/>
                                 <connections>
-                                    <action selector="b3Click:" destination="JbW-nk-muX" eventType="touchUpInside" id="o6I-fS-mRl"/>
+                                    <action selector="buttonTapped:" destination="JbW-nk-muX" eventType="touchUpInside" id="QW7-np-q8A"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="b1" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edJ-TU-vxn">
@@ -160,7 +160,7 @@
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="b1Click:" destination="JbW-nk-muX" eventType="touchUpInside" id="XDP-Do-354"/>
+                                    <action selector="buttonTapped:" destination="JbW-nk-muX" eventType="touchUpInside" id="1QT-Tn-VTt"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="player 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdV-xX-gIf">
